@@ -1,0 +1,35 @@
+1. Make sure ~/.vim/bundle exists
+2. Clone Vundle to the bundle dir to install it:
+   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle 
+3. Clone YouCompleteMe:
+   git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
+
+   And run:
+   git submodule update --init --recursive
+4. Install python-dev:
+   sudo yum install python-devel
+5. Install gcc and g++ (or clang++ if you can):
+   sudo yum install gcc
+   sudo yum install gcc-c++
+6. Run the build script in the YouCompleteMe folder:
+   ./install.sh --clang-completer
+7. Add the following lines to ~/.vimrc:
+  
+" Turn on YouCompleteMe using Vundle
+" Installed it using ArchAUR instead of binaries from scratch
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+call vundle#rc()
+Bundle 'Valloric/YouCompleteMe'
+filetype plugin indent on     " required!
+
+" Vundle brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
